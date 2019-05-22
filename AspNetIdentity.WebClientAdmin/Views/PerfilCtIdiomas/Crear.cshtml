@@ -1,0 +1,77 @@
+﻿@model AspNetIdentity.Models.PerfilCtIdiomasModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="card mb-4 wow fadeIn">
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Crear Idioma</h3>
+        <p class="card-text">Perfil  / Idiomas / Crear</p>
+    </div>
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"> </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Crear", "PerfilCtIdiomas", FormMethod.Post, htmlAttributes: new { id = "car-form", @name = "car-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOMBRE, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <a id="btn-sendForm" href="#" class="btn btn-primary" onclick="Redir('CrearJson', 'PerfilCtIdiomas')">Enviar</a>
+                                @Html.EditorFor(model => model.NOMBRE_NIVEL, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                <div id="respuesta"> </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")   @Scripts.Render("~/Scripts/ModalControl.js")
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '@Url.Action("ListNivIdioma")', // we are calling json method
+                                            dataType: 'json',
+                                            success: function(states) {
+                                                //   alert("ok_pais");
+                                                $.each(states, function (i, state) {
+                                                    $("#ID_IDIOM_NIVEL").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                                });
+                                            },
+                                            error: function (ex) {
+                                                console.log(ex.responseText);
+                                            }
+                                        });
+
+                                    });
+</script>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AspNetIdentity.Models.PerfilFinalidadModel>
+
+
+                <table class="table">
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ACCION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FUNCION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RESULTADOS)
+                        </th>
+
+                        <th width="10%"></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ACCION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FUNCION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RESULTADOS)
+                            </td>
+
+                            <td>
+                                <a href="#" onclick="Ejecutar ('@item.ID_FINALIDAD','PerfilFinalidad','Edit'); return false;"  title="Modificar" style="color: #013ADF;" ><i class="fa fa-refresh" aria-hidden="true"></i></a> |
+                                <a href="#" onclick="Ejecutar ('@item.ID_FINALIDAD','PerfilFinalidad','Detail'); return false;" title="Detalle" style="color: #013ADF;"  ><i class="fa fa-search" aria-hidden="true"></i> </a> |
+                                <a href="#" onclick="Ejecutar ('@item.ID_FINALIDAD','PerfilFinalidad','Delete'); return false;" title="Borrar" style="color: #013ADF;" ><i class="fa fa-trash" aria-hidden="true"></i></a> |
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+             

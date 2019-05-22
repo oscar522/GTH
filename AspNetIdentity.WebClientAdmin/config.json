@@ -1,0 +1,79 @@
+{
+  "menus": [
+    {
+      "role": "Manager",
+      "links": [
+        {
+          "order": 1,
+          "controllerName": "Reports",
+          "actionName": "Index",
+          "linkText": "Reportes",
+          "iconText": "fa fa-file mr-3"
+        },
+        {
+          "order": 2,
+          "controllerName": "HvDatosBasicos",
+          "actionName": "Index",
+          "linkText": "Curriculum Vitae",
+          "iconText": "fa fa-user mr-3",
+          "id": ""
+        },
+        //{
+        //  "order": 3,
+        //  "controllerName": "Home",
+        //  "actionName": "IndexCv",
+        //  "linkText": "Parametrico",
+        //  "iconText": "fa fa-cog mr-3"
+        //},
+        {
+          "order": 4,
+          "controllerName": "Perfil",
+          "actionName": "Index",
+          "linkText": "Perfil",
+          "iconText": "fa fa-user mr-3"
+        }
+        //{
+        //  "order": 5,
+        //  "controllerName": "Home",
+        //  "actionName": "IndexPerfil",
+        //  "linkText": "Parametrico",
+        //  "iconText": "fa fa-cog mr-3"
+        //}
+      ]
+    },
+    {
+      "role": "User",
+      "links": [
+        {
+          "order": 1,
+          "controllerName": "Employee",
+          "actionName": "PrivacyPolicy",
+          "linkText": "Aviso de privacidad",
+          "iconText": "fa fa-clipboard mr-3"
+        },
+        {
+          "order": 2,
+          "controllerName": "Employee",
+          "actionName": "AboutTheCompany",
+          "linkText": "Acerca de ...",
+          "iconText": "fa fa-building mr-3"
+        },
+        {
+          "order": 3,
+          "controllerName": "Employee",
+          "actionName": "MyProfile",
+          "linkText": "Mi perfil",
+          "iconText": "fa fa-user mr-3",
+          "id" :  "DatosBasicos"
+        },
+        {
+          "order": 4,
+          "controllerName": "Employee",
+          "actionName": "MyProcess",
+          "linkText": "Mis procesos",
+          "iconText": "fa fa-file mr-3"
+        }
+      ]
+    }
+  ]
+}

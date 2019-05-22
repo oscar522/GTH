@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eee41935bd6b46838a2cc988ab7792cc" Name="Diagram1">
+        <EntityTypeShape EntityType="AspNetIdentityModel.Accounts" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.Accounts_AdditionalInformation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.Users" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.CT_Tests" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.CT_Answers" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.CT_Dimensions" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.CT_Factors" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.CT_Questions" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.Temp_AspNetUsersTests" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.Temp_AspNetUsersTests_Details" Width="1.5" PointX="8.375" PointY="8.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL" Width="1.5" PointX="10.75" PointY="6.625" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_COMPETENCIAS" Width="1.5" PointX="13" PointY="1.5" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CONOCIMIENTOS" Width="1.5" PointX="13" PointY="9.875" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_AREA" Width="1.5" PointX="5.75" PointY="12" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_COMPETENCIAS" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_ESCOLARIDAD" Width="1.5" PointX="5.75" PointY="14.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_ESPECIALIDAD" Width="1.5" PointX="7.75" PointY="14.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_IDIOM_NIVEL" Width="1.5" PointX="9.75" PointY="14.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_IDIOMAS" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_SUB_AREA" Width="1.5" PointX="8" PointY="11.875" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_CT_TIPOS_COMPETENCIAS" Width="1.5" PointX="0.75" PointY="12.125" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_FINALIDADES" Width="1.5" PointX="13" PointY="3.875" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_FORMA_IDIOMAS" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_FORMACION" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_PROCESOS" Width="1.5" PointX="13" PointY="7" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.PERFIL_RELACIONES" Width="1.5" PointX="13" PointY="12.875" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFI_CO_RELATIONS_PERFIL" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFIL_C_RELATIONS_PERFIL" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFIL_F_RELATIONS_PERFIL2" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFIL_P_RELATIONS_PERFIL" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFIL_R_RELATIONS_PERFIL" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFIL_C_RELATIONS_PERFIL_C" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_PERFIL_C_RELATIONS_PERFIL_C2" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_ACTITUDES" Width="1.5" PointX="12.75" PointY="16.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CONOCIMIENTOS" Width="1.5" PointX="5.75" PointY="17.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_ACTITUDES" Width="1.5" PointX="7.75" PointY="17.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_CARGO" Width="1.5" PointX="15.75" PointY="16.625" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_CIUDAD" Width="1.5" PointX="9.75" PointY="17.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_CONOCIMIENTOS" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_DEPTO" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_DISIPLINA" Width="1.5" PointX="18" PointY="12.625" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_EMPRESAS" Width="1.5" PointX="15.75" PointY="12.375" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_ESTADO_CIVIL" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_INSTITUCION" Width="1.5" PointX="18" PointY="9.375" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_PAIS" Width="1.5" PointX="15.75" PointY="5.125" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_TIPO_IDENTIFICACION" Width="1.5" PointX="11.75" PointY="19.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_TITULOS" Width="1.5" PointX="18" PointY="4.625" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_DATOS_BASICOS" Width="1.5" PointX="13.75" PointY="19.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_ESTUDIOS" Width="1.5" PointX="20.25" PointY="4" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_EXPERIENCIA" Width="1.5" PointX="18" PointY="16" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_UBICACION" Width="1.5" PointX="4.75" PointY="20.75" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_HV_EXPER_RELATIONS_HV_CT_CA" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_HV_ESTUD_RELATIONS_HV_CT_DI" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_HV_EXPER_RELATIONS_HV_CT_EM" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_HV_ESTUD_RELATIONS_HV_CT_IN" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_HV_CT_TI_RELATIONS_HV_CT_PA" />
+        <AssociationConnector Association="AspNetIdentityModel.FK_HV_ESTUD_RELATIONS_HV_CT_TI" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.Cat_StatusTest" Width="1.5" PointX="7.375" PointY="20.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.HV_CT_GENERO" Width="1.5" PointX="7.375" PointY="20.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.CT_Dimension_Notes" Width="1.5" PointX="20.375" PointY="8.75" />
+        <EntityTypeShape EntityType="AspNetIdentityModel.AspNetUsers" Width="1.5" PointX="20.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

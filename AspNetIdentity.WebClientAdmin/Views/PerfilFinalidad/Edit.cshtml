@@ -1,0 +1,78 @@
+﻿@model AspNetIdentity.Models.PerfilFinalidadModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Editar Finalidad  @Html.DisplayFor(modelItem => Model.ID_FINALIDAD) </h3>
+        <p class="card-text">Perfil / Finalidad</p>
+    </div>
+
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Edit", "PerfilFinalidad", FormMethod.Post, htmlAttributes: new { id = "car-form", @name = "car-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_FINALIDAD, htmlAttributes: new { @class = "control-label col-md-4", @style = "display:none" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.ID_FINALIDAD, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                                @Html.ValidationMessageFor(model => model.ID_FINALIDAD, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_PERFIL, htmlAttributes: new { @class = "control-label col-md-4", @style = "display:none" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.ID_PERFIL, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                                @Html.ValidationMessageFor(model => model.ID_PERFIL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ACCION, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.ACCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ACCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FUNCION, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.FUNCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FUNCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.RESULTADOS, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.RESULTADOS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RESULTADOS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <a id="btn-sendForm" href="#" class="btn btn-primary" onclick="Redir('EditJson', 'PerfilFinalidad')">Enviar</a>
+                                <div id="respuesta"> </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+﻿@model AspNetIdentity.Models.PerfilModel
+
+@{
+    ViewBag.Title = "Detalle Perfil" + @Html.DisplayFor(modelItem => Model.NOMBRE);
+}
+
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Detalle Perfil  @Html.DisplayFor(modelItem => Model.NOMBRE) </h3>
+        <p class="card-text">Perfil</p>
+    </div>
+
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NOMBRE)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NOMBRE)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreArea)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreArea)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreSubArea)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreSubArea)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreReporta)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreReporta)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreSupervisa)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreSupervisa)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.OBJETIVO)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.OBJETIVO)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @*@Html.ActionLink("Finalidades", "../PerfilFinalidad/Crear", new { IdTable = Model.ID_PERFIL }) |
+                @Html.ActionLink("Procesos", "../PerfilProcesos/Crear", new { IdTable = Model.ID_PERFIL }) |
+                @Html.ActionLink("Relaciones", "../PerfilRelaciones/Crear", new { IdTable = Model.ID_PERFIL }) |
+                @Html.ActionLink("Formacion", "../PerfilFormacion/Crear", new { IdTable = Model.ID_PERFIL })*@
+
+                <a href="@Url.Action("../PerfilFinalidad/Crear", "Finalidades" , new { IdTable = Model.ID_PERFIL } )" class="btn btn-light ">
+                    Finalidades
+                </a>
+                <a href="@Url.Action("../PerfilProcesos/Crear", "Procesos" , new { IdTable = Model.ID_PERFIL } )" class="btn btn-light ">
+                    Procesos
+                </a>
+                <a href="@Url.Action("../PerfilRelaciones/Crear", "Relaciones" , new { IdTable = Model.ID_PERFIL } )" class="btn btn-light ">
+                    Relaciones
+                </a>
+                <a href="@Url.Action("../PerfilFormacion/Crear", "Formacion" , new { IdTable = Model.ID_PERFIL } )" class="btn btn-light ">
+                    Formacion
+                </a>
+
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AspNetIdentity.Models.PerfilProcesosModel>
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.NOMBRE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DESCRIPCION)
+            </th>
+
+            <th width="10%"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                </td>
+
+                <td>
+                    <a href="#" onclick="Ejecutar ('@item.ID_PROCESO','PerfilProcesos','Edit'); return false;"  title="Modificar" style="color: #013ADF;" ><i class="fa fa-refresh" aria-hidden="true"></i></a> |
+                    <a href="#" onclick="Ejecutar ('@item.ID_PROCESO','PerfilProcesos','Detail'); return false;" title="Detalle" style="color: #013ADF;"  ><i class="fa fa-search" aria-hidden="true"></i> </a> |
+                    <a href="#" onclick="Ejecutar ('@item.ID_PROCESO','PerfilProcesos','Delete'); return false;" title="Borrar" style="color: #013ADF;" ><i class="fa fa-trash" aria-hidden="true"></i></a> |
+
+                </td>
+            </tr>
+        }
+
+    </table>
+               

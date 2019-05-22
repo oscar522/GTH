@@ -1,0 +1,94 @@
+﻿@model AspNetIdentity.Models.PerfilCtSubAreaModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="card mb-4 wow fadeIn">
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Editar Sub Area @Html.DisplayFor(modelItem => Model.DESCRIPCION)</h3>
+        <p class="card-text">Perfil  / Sub AreaSub Area</p>
+    </div>
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"> </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Edit", "PerfilCtSubArea", FormMethod.Post, htmlAttributes: new { id = "car-form", @name = "car-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ID_CT_SUB_AREA, new { htmlAttributes = new { @class = "form-control", @style = "display : none" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_CT_AREA, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @*@Html.DropDownList("ID_CT_PAIS", ViewData["ID_CT_PAIS"] as IEnumerable<SelectListItem>)*@
+                                @Html.DropDownList("ID_CT_AREA", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_AREA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESCRIPCION, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <a id="btn-sendForm" href="#" class="btn btn-primary" onclick="Redir('EditJson', 'PerfilCtSubArea')">Enviar</a>
+                                @Html.EditorFor(model => model.NombreArea, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                <div id="respuesta"> </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")   @Scripts.Render("~/Scripts/ModalControl.js")
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $.ajax({
+                                                type: 'POST',
+                                                url: '@Url.Action("ListArea")', // we are calling json method
+                                                dataType: 'json',
+                                                success: function(states) {
+                                                   // alert("ok_pais");
+                                                    $.each(states, function (i, state) {
+                                                        if ('@Model.ID_CT_AREA' == state.Value) {
+                                                            $("#ID_CT_AREA").append('<option value="' + state.Value + '" selected>' + state.Text + '</option>');
+                                                        } else {
+                                                            $("#ID_CT_AREA").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                                                        }
+
+                                                    });
+                                                },
+                                                error: function (ex) {
+                                                    console.log(ex.responseText);
+                                                }
+                                            });
+
+                                    });
+</script>

@@ -1,0 +1,100 @@
+﻿@model AspNetIdentity.Models.HvEstudiosModel
+@{
+    ViewBag.Title = "Detalle Estudios" + @Html.DisplayFor(modelItem => Model.ID_ESTUDIOS);
+}
+
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Detalle Estudios  @Html.DisplayFor(modelItem => Model.ID_ESTUDIOS) </h3>
+        <p class="card-text">Hoja de Vida / Estudios</p>
+    </div>
+
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NOMBRE_INSTITUCION)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NOMBRE_INSTITUCION)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NOMBRE_TITULO)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NOMBRE_TITULO)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NOMBRE_DISIPLINA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NOMBRE_DISIPLINA)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DESDE)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DESDE)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HASTA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HASTA)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NOTA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NOTA)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DESCRIPCION)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DESCRIPCION)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ARCHIVO_RUTA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ARCHIVO_RUTA)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ACTIVIDADES)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ACTIVIDADES)
+                    </dd>
+                </dl>
+            </div>
+            <p>
+
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+﻿@model AspNetIdentity.Models.HvExperienciaModel
+
+@{
+    Layout = null;
+}
+
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Editar Experiencia  @Html.DisplayFor(modelItem => Model.ID_EXPERIENCIA) </h3>
+        <p class="card-text">Hoja de Vida / Experiencia</p>
+    </div>
+
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Edit", "HvExperiencia", FormMethod.Post, htmlAttributes: new { id = "car-form", @name = "car-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ID_DATOS_BASICOS, new { htmlAttributes = new { @class = "form-control", style = "Display:none" } })
+                                @Html.EditorFor(model => model.ID_EXPERIENCIA, new { htmlAttributes = new { @class = "form-control", style = "Display:none" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_CT_EMPRESA, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_EMPRESA", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_EMPRESA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_CT_CARGO, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_CARGO", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_CARGO, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESDE, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DESDE, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = Model.DESDE.ToString("yyyy-MM-dd") } })
+                                @Html.ValidationMessageFor(model => model.DESDE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HASTA, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.HASTA, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = Model.HASTA.ToString("yyyy-MM-dd") } })
+                                @Html.ValidationMessageFor(model => model.HASTA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TRABAJO_ACTUAL, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @*@Html.CheckBox("TRABAJO_ACTUAL")*@
+                            <div class="col-md-10">
+                                <select id="TRABAJO_ACTUAL" name="TRABAJO_ACTUAL">
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.TRABAJO_ACTUAL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESCRIPCION, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ARCHIVO_RUTA, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ARCHIVO_RUTA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ARCHIVO_RUTA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.EditorFor(model => model.NOMBRE_CARGO, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                @Html.EditorFor(model => model.NOMBRE_EMPRESA, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                <input type="submit" value="Create" class="btn btn-default" />
+                                <a id="btn-sendForm" href="#" class="btn btn-primary" onclick="Redir('EditJson', 'HvExperiencia')">Enviar</a>
+                                <div id="respuesta"> </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+
+                </div>
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")   @Scripts.Render("~/Scripts/ModalControl.js")
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                    $(document).ready(function () {
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("ListEmpresa")', // we are calling json method
+                            dataType: 'json',
+                            success: function(states) {
+                                //   alert("ok_pais");
+                                $.each(states, function (i, state) {
+                                    if ('@Model.ID_CT_EMPRESA' == state.Value) {
+                                        $("#ID_CT_EMPRESA").append('<option value="' + state.Value + '" selected>' + state.Text + '</option>');
+                                    } else {
+                                        $("#ID_CT_EMPRESA").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                                    }
+                                });
+                            },
+                            error: function (ex) {
+                                console.log(ex.responseText);
+                            }
+                        });
+                        $.ajax({
+                            type: 'POST',
+                            url: '@Url.Action("ListCargo")', // we are calling json method
+                            dataType: 'json',
+                            success: function(states) {
+                                //   alert("ok_pais");
+                                $.each(states, function (i, state) {
+                                     if ('@Model.ID_CT_CARGO' == state.Value) {
+                                         $("#ID_CT_CARGO").append('<option value="' + state.Value + '" selected>' + state.Text + '</option>');
+                                    } else {
+                                         $("#ID_CT_CARGO").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                                    }
+                                });
+                            },
+                            error: function (ex) {
+                                console.log(ex.responseText);
+                            }
+                        });
+                    });
+</script>

@@ -1,0 +1,51 @@
+﻿@model AspNetIdentity.Models.PerfilFormacionModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="card mb-4 wow fadeIn">
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Detalle Formacion</h3>
+        <p class="card-text">Perfil / Formacion</p>
+    </div>
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreEscolaridad)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreEscolaridad)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreEspecialidad)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreEspecialidad)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EXPERIENCIA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EXPERIENCIA)
+                    </dd>
+
+
+
+                </dl>
+            </div>
+        </div>
+    </div>
+ </div>

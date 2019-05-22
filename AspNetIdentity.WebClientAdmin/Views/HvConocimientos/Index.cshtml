@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AspNetIdentity.Models.HvConocimientosModel>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NOMBRE_CT_CONOCIMIENTOS)
+            </th>
+
+            <th width="10%"></th>
+        </tr>
+
+        @foreach (var item2 in Model)
+        {
+            <tr>
+                <td  width="80%">
+                    @Html.DisplayFor(modelItem => item2.NOMBRE_CT_CONOCIMIENTOS)
+                </td>
+
+                <td>
+                    <a href="#" onclick="EjecutarModalSlim ('@item2.ID_CONOCIMIENTOS','HvConocimientos','Edit','EDITAR CONOCIMIENTOS'); return false;"  title="Modificar" style="color: #013ADF;" ><i class="fa fa-refresh" aria-hidden="true"></i></a> |
+                    <a href="#" onclick="EjecutarModalSlim ('@item2.ID_CONOCIMIENTOS','HvConocimientos','Details','DETALLE CONOCIMIENTOS'); return false;" title="Detalle" style="color: #013ADF;"  ><i class="fa fa-search" aria-hidden="true"></i> </a> |
+                    <a href="#" onclick="EjecutarModalSlim ('@item2.ID_CONOCIMIENTOS','HvConocimientos','Delete','BORRAR CONOCIMIENTOS'); return false;" title="Borrar" style="color: #013ADF;" ><i class="fa fa-trash" aria-hidden="true"></i></a> |
+
+                </td>
+            </tr>
+        }
+
+    </table>
+            

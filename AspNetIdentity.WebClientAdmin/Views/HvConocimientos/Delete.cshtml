@@ -1,0 +1,26 @@
+﻿@model AspNetIdentity.Models.HvConocimientosModel
+
+@{
+    ViewBag.Title = "Borrar Conocimientos" + @Html.DisplayFor(modelItem => Model.ID_CONOCIMIENTOS);
+}
+
+
+                <dl class="dl-horizontal text-center"">
+                    <dt>
+                       NOMBRE
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NOMBRE_CT_CONOCIMIENTOS)
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color text-center">
+                        <input type="submit" value="Borrar" class="btn btn-primary" /> 
+                    </div>
+                }
+      

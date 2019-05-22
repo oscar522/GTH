@@ -1,0 +1,46 @@
+﻿@model AspNetIdentity.Models.PerfilFormacionIdiomasModel
+@{
+    ViewBag.Title = "Detalle Perfil" + @Html.DisplayFor(modelItem => Model.NombreNivel);
+}
+
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Detalle Formacion Idiomas  @Html.DisplayFor(modelItem => Model.NombreNivel) </h3>
+        <p class="card-text">Perfil / Formacion Idiomas </p>
+    </div>
+
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+                <hr />
+                <dl class="dl-horizontal">
+                    
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreIdioma)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreIdioma)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreNivel)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreNivel)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+               
+            </p>
+        </div>
+    </div>
+</div>

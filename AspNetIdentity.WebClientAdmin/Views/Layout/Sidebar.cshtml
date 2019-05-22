@@ -1,0 +1,17 @@
+﻿@model List<AspNetIdentity.WebClientAdmin.Models.SidebarItem>
+
+<div class="sidebar-fixed position-fixed">
+
+    <a class="waves-effect">
+        <img src="~/Images/LogoPlataforma.jpg" class="img-fluid" alt="">
+    </a>
+
+    <div class="list-group list-group-flush">
+        @foreach (AspNetIdentity.WebClientAdmin.Models.SidebarItem sidebarItem in Model)
+        {
+            <a href="@Url.Action(sidebarItem.actionName, sidebarItem.controllerName)" class="list-group-item list-group-item-action waves-effect" id="@sidebarItem.id">
+                <i class="@sidebarItem.iconText"></i>@sidebarItem.linkText 
+            </a>
+        }
+    </div>
+</div>

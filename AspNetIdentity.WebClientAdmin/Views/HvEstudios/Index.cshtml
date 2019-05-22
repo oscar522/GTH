@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AspNetIdentity.Models.HvEstudiosModel>
+
+<table class="table" width="80%">
+    <tr>
+        <th width="16%">
+            @Html.DisplayNameFor(model => model.NOMBRE_INSTITUCION)
+        </th>
+        <th width="16%">
+            @Html.DisplayNameFor(model => model.NOMBRE_TITULO)
+        </th>
+        <th width="16%">
+            @Html.DisplayNameFor(model => model.NOMBRE_DISIPLINA)
+        </th>
+        <th width="16%">
+            @Html.DisplayNameFor(model => model.DESDE)
+        </th>
+        <th width="16%">
+            @Html.DisplayNameFor(model => model.HASTA)
+        </th>
+
+        <th width="10%"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_INSTITUCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_TITULO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_DISIPLINA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESDE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HASTA)
+            </td>
+
+            <td>
+                <a href="#" onclick="Ejecutar ('@item.ID_ESTUDIOS','HvEstudios','Edit'); return false;" title="Modificar" style="color: #013ADF;"><i class="fa fa-refresh" aria-hidden="true"></i></a> |
+                <a href="#" onclick="Ejecutar ('@item.ID_ESTUDIOS','HvEstudios','Detail'); return false;" title="Detalle" style="color: #013ADF;"><i class="fa fa-search" aria-hidden="true"></i> </a> |
+                <a href="#" onclick="Ejecutar ('@item.ID_ESTUDIOS','HvEstudios','Delete'); return false;" title="Borrar" style="color: #013ADF;"><i class="fa fa-trash" aria-hidden="true"></i></a> |
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,187 @@
+﻿@model AspNetIdentity.Models.HvEstudiosModel
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Editar Estudios  @Html.DisplayFor(modelItem => Model.ID_ESTUDIOS) </h3>
+        <p class="card-text">Hoja de Vida / Estudios</p>
+    </div>
+
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+
+
+                @using (Html.BeginForm("Edit", "HvEstudios", FormMethod.Post, htmlAttributes: new { id = "car-form", @name = "car-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+
+                            @Html.EditorFor(model => model.ID_ESTUDIOS, new { htmlAttributes = new { @class = "form-control", @Style = "Display : None" } })
+                            @Html.EditorFor(model => model.ID_DATOS_BASICOS, new { htmlAttributes = new { @class = "form-control", @Style = "Display : None" } })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOMBRE_INSTITUCION, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_INSTITUCION", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_INSTITUCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOMBRE_TITULO, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_TITULOS", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_TITULOS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOMBRE_DISIPLINA, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_DISIPLINA", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_DISIPLINA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESDE, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DESDE, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = Model.DESDE.ToString("yyyy-MM-dd") } })
+                                @Html.ValidationMessageFor(model => model.DESDE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HASTA, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.HASTA, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = Model.HASTA.ToString("yyyy-MM-dd") } })
+                                @Html.ValidationMessageFor(model => model.HASTA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOTA, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NOTA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NOTA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DESCRIPCION, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ARCHIVO_RUTA, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ARCHIVO_RUTA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ARCHIVO_RUTA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ACTIVIDADES, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ACTIVIDADES, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ACTIVIDADES, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.EditorFor(model => model.ID_DATOS_BASICOS, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+                                @Html.EditorFor(model => model.NOMBRE_DISIPLINA, new { htmlAttributes = new { @class = "form-control", @style = "display:none", @Value = "ok" } })
+                                @Html.EditorFor(model => model.NOMBRE_INSTITUCION, new { htmlAttributes = new { @class = "form-control", @style = "display:none", @Value = "ok" } })
+                                @Html.EditorFor(model => model.NOMBRE_TITULO, new { htmlAttributes = new { @class = "form-control", @style = "display:none", @Value = "ok" } })
+                                <a id="btn-sendForm" href="#" class="btn btn-primary" onclick="Redir('EditJson', 'HvEstudios')">Enviar</a>
+                                <div id="respuesta"> </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                </div>
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")   @Scripts.Render("~/Scripts/ModalControl.js")
+
+                }   
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $.ajax({
+        type: 'POST',
+        url: '@Url.Action("ListCtInstituciones")', // we are calling json method
+        dataType: 'json',
+        success: function(states) {
+            //   alert("ok_pais");
+            $.each(states, function (i, state) {
+                if ('@Model.ID_CT_INSTITUCION' == state.Value) {
+                    $("#ID_CT_INSTITUCION").append('<option value="' + state.Value + '" selected>' + state.Text + '</option>');
+                } else {
+                    $("#ID_CT_INSTITUCION").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                }
+            });
+        },
+        error: function (ex) {
+            console.log(ex.responseText);
+        }
+    });
+    $.ajax({
+        type: 'POST',
+        url: '@Url.Action("ListCtTitulos")', // we are calling json method
+        dataType: 'json',
+        success: function(states) {
+            //   alert("ok_pais");
+            $.each(states, function (i, state) {
+                if ('@Model.ID_CT_TITULOS' == state.Value) {
+                    $("#ID_CT_TITULOS").append('<option value="' + state.Value + '" selected>' + state.Text + '</option>');
+                } else {
+                    $("#ID_CT_TITULOS").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                }
+            });
+        },
+        error: function (ex) {
+            console.log(ex.responseText);
+        }
+    });
+        $.ajax({
+        type: 'POST',
+        url: '@Url.Action("ListCtDisiplina")', // we are calling json method
+        dataType: 'json',
+        success: function(states) {
+            //   alert("ok_pais");
+            $.each(states, function (i, state) {
+                if ('@Model.ID_CT_DISIPLINA' == state.Value) {
+                    $("#ID_CT_DISIPLINA").append('<option value="' + state.Value + '" selected>' + state.Text + '</option>');
+                } else {
+                    $("#ID_CT_DISIPLINA").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                }
+            });
+        },
+        error: function (ex) {
+            console.log(ex.responseText);
+        }
+    });
+});
+</script>

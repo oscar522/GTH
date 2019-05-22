@@ -1,0 +1,219 @@
+﻿@model AspNetIdentity.Models.HvUbicacionModel
+
+@{
+    ViewBag.Title = "Crear";
+}
+
+<div class="card mb-4 wow fadeIn">
+
+    <!--Card content-->
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Crear Actitudes</h3>
+        <p class="card-text">Hoja de Vida / Ubicacion </p>
+    </div>
+
+</div>
+
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"> </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Crear", "HvUbicacion", FormMethod.Post, htmlAttributes: new { id = "car-form", @name = "car-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ID_DATOS_BASICOS, new { htmlAttributes = new { @class = "form-control", style = "display:none" } })
+                                @Html.ValidationMessageFor(model => model.ID_DATOS_BASICOS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4"> PAIS</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_PAIS", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_PAIS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4"> DEPARTAMENTO</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_DEPTO", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_DEPTO, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4"> CIUDAD</label>
+                            <div class="col-md-10">
+                                @Html.DropDownList("ID_CT_CIUDAD", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_CIUDAD, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOMENCLATURA, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.NOMENCLATURA, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NOMENCLATURA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LOCALIDAD, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.LOCALIDAD, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LOCALIDAD, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                @Html.EditorFor(model => model.NOMBRE_CIUDAD, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                @Html.EditorFor(model => model.NOMBRE_DEPTO, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                @Html.EditorFor(model => model.NOMBRE_PAIS, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok" } })
+                                <input type="submit" value="Create" class="btn btn-default" />
+                                <br />
+                                <a href="@Url.Action("../HvUbicacion/Index", "Index" , new { IdP = Model.ID_DATOS_BASICOS } )">
+                                    Ver
+                                </a>
+                                <br />
+                                <a href="@Url.Action("../HvDatosBasicos/Detail", "Detail", new { IdTable = @Request["IdTable"]  } )" class=" ">Regresar</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")   @Scripts.Render("~/Scripts/ModalControl.js")
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("ListPais")', // we are calling json method
+                                    dataType: 'json',
+                                    success: function(states) {
+
+                                        $.each(states, function (i, state) {
+                                            $("#ID_CT_PAIS").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                        });
+                                    },
+                                    error: function (ex) {
+                                        console.log(ex.responseText);
+                                    }
+                                });
+                            $("#ID_CT_PAIS").change(function () {
+                                $("#ID_CT_DEPTO").empty();
+                              // alert("okdepto" + $("#ID_CT_PAIS").val());
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("ListDeptoId")', // we are calling json method
+                                    dataType: 'json',
+                                    data: { IdP: $("#ID_CT_PAIS").val() },
+                                        success: function(states) {
+                                            //alert("depto in " + $("#ID_CT_PAIS").val());
+                                            $("#ID_CT_DEPTO").append('<option value="">Seleccione</option>');
+                                            $.each(states, function (i, state) {
+                                                $("#ID_CT_DEPTO").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                            });
+                                        },
+                                    error: function (ex) {
+                                        console.log(ex.responseText);
+                                    }
+                                });
+                                return false;
+                            });
+                            $("#ID_CT_DEPTO").change(function () {
+                                $("#ID_CT_CIUDAD").empty();
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("ListCiudadId")', // we are calling json method
+                                    dataType: 'json',
+                                    data: { IdP: $("#ID_CT_DEPTO").val() },
+                                        success: function(states) {
+                                          //  alert("okdepto" + $("#ID_CT_DEPTO").val());
+                                            $.each(states, function (i, state) {
+                                              //  alert(state.Value);
+                                                $("#ID_CT_CIUDAD").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                            });
+                                        },
+                                    error: function (ex) {
+                                        console.log(ex.responseText);
+                                    }
+                                });
+                                return false;
+                            });
+                            console.log("ready!");
+                        });
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+                        $(document).ready(function () {
+                            $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("ListPais")', // we are calling json method
+                                    dataType: 'json',
+                                    success: function(states) {
+
+                                        $.each(states, function (i, state) {
+                                            $("#ID_CT_PAIS").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                        });
+                                    },
+                                    error: function (ex) {
+                                        console.log(ex.responseText);
+                                    }
+                                });
+                            $("#ID_CT_PAIS").change(function () {
+                                $("#ID_CT_DEPTO").empty();
+                              // alert("okdepto" + $("#ID_CT_PAIS").val());
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("ListDeptoId")', // we are calling json method
+                                    dataType: 'json',
+                                    data: { IdP: $("#ID_CT_PAIS").val() },
+                                        success: function(states) {
+                                            //alert("depto in " + $("#ID_CT_PAIS").val());
+                                            $("#ID_CT_DEPTO").append('<option value="">Seleccione</option>');
+                                            $.each(states, function (i, state) {
+                                                $("#ID_CT_DEPTO").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                            });
+                                        },
+                                    error: function (ex) {
+                                        console.log(ex.responseText);
+                                    }
+                                });
+                                return false;
+                            });
+                            $("#ID_CT_DEPTO").change(function () {
+                                $("#ID_CT_CIUDAD").empty();
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '@Url.Action("ListCiudadId")', // we are calling json method
+                                    dataType: 'json',
+                                    data: { IdP: $("#ID_CT_DEPTO").val() },
+                                        success: function(states) {
+                                          //  alert("okdepto" + $("#ID_CT_DEPTO").val());
+                                            $.each(states, function (i, state) {
+                                              //  alert(state.Value);
+                                                $("#ID_CT_CIUDAD").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                            });
+                                        },
+                                    error: function (ex) {
+                                        console.log(ex.responseText);
+                                    }
+                                });
+                                return false;
+                            });
+                            console.log("ready!");
+                        });
+</script>

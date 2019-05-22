@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AspNetIdentity.Models.HvExperienciaModel>
+                <table class="table" width="80%">
+                    <tr>
+
+                        <th  >
+                            EMPRESA
+                        </th>
+                        <th >
+                            CARGO
+                        </th>
+                        @*<th width="11%">
+                            @Html.DisplayNameFor(model => model.DESDE)
+                        </th>
+                        <th width="11%">
+                            @Html.DisplayNameFor(model => model.HASTA)
+                        </th>*@
+                        <th >
+                            TRABAJO ACTUAL ?
+                        </th>
+                        <th >
+                            @Html.DisplayNameFor(model => model.DESCRIPCION)
+                        </th>
+                        @*<th width="11%">
+                            SOPORTE
+                        </th>*@
+                        <th width="10%"></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NOMBRE_EMPRESA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NOMBRE_CARGO)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.DESDE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HASTA)
+                            </td>*@
+                            <td>
+                                @if (item.TRABAJO_ACTUAL == 1) { Write("Si"); } else { Write("No"); }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.ARCHIVO_RUTA)
+                            </td>*@
+                            <td>
+                                <a href="#" onclick="Ejecutar ('@item.ID_EXPERIENCIA','HvExperiencia','Edit'); return false;" title="Modificar" style="color: #013ADF;"><i class="fa fa-refresh" aria-hidden="true"></i></a> |
+                                <a href="#" onclick="Ejecutar ('@item.ID_EXPERIENCIA','HvExperiencia','Detail'); return false;" title="Detalle" style="color: #013ADF;"><i class="fa fa-search" aria-hidden="true"></i> </a> |
+                                <a href="#" onclick="Ejecutar ('@item.ID_EXPERIENCIA','HvExperiencia','Delete'); return false;" title="Borrar" style="color: #013ADF;"><i class="fa fa-trash" aria-hidden="true"></i></a> |
+
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+               

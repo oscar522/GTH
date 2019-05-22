@@ -1,0 +1,6 @@
+C:\Users\ivabal\Desktop\GTH_FIN\AspNetIdentity.Models\bin\Debug\AspNetIdentity.Models.dll
+C:\Users\ivabal\Desktop\GTH_FIN\AspNetIdentity.Models\bin\Debug\AspNetIdentity.Models.pdb
+C:\Users\ivabal\Desktop\GTH_FIN\AspNetIdentity.Models\obj\Debug\AspNetIdentity.Models.csproj.CoreCompileInputs.cache
+C:\Users\ivabal\Desktop\GTH_FIN\AspNetIdentity.Models\obj\Debug\AspNetIdentity.Models.dll
+C:\Users\ivabal\Desktop\GTH_FIN\AspNetIdentity.Models\obj\Debug\AspNetIdentity.Models.pdb
+C:\Users\ivabal\Desktop\GTH_FIN\AspNetIdentity.Models\obj\Debug\AspNetIdentity.Models.csprojAssemblyReference.cache

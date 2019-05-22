@@ -1,0 +1,378 @@
+﻿@model AspNetIdentity.Models.HvDatosBasicosModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    @{ ViewBag.Title = "Crear"; }
+    @section Scripts
+             {
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="~/Scripts/popper.min.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <!-- Material Design for Bootstrap fonts and icons -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Material Design for Bootstrap CSS -->
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <link href="~/Content/mdb.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6/js/select2.min.js"></script>
+
+        <script src="~/Scripts/mdb.js"></script>
+
+        <script type="text/javascript">
+
+
+                $(document).ready(function () {
+                    $('select').select2();
+                    $(".requerido").text("*");
+                    $(".requerido").addClass("red-text");
+
+
+
+                    $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListPerfil")', // we are calling json method
+                    dataType: 'json',
+                    success: function(states) {
+                        //   alert("ok_pais");
+                        $.each(states, function (i, state) {
+                            $("#ID_PERFIL").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        console.log(ex.responseText);
+                    }
+                    });
+
+                    @*$(".ID_PERFIL").select2({
+                        placeholder: "00000",
+                        minimumInputLength: 2,
+                        ajax: {
+                            url: '@Url.Action("ListPerfil")',
+                            dataType: 'json',
+                            type: "POST",
+                            data: function (term, page) {
+                                return {
+                                    q: term,//search term
+                                    col: 'vdn'
+                                };
+                            },
+                            results: function (data) {//parse the results into the format expected by Select2.
+                                //since we are using custom formatting functions we do not need to alter remote JSON data
+                                return { results: data };
+                            }
+                        }
+                    });*@
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListTipoIdentificacion")', // we are calling json method
+                    dataType: 'json',
+                    success: function(states) {
+                        //   alert("ok_pais");
+                        $.each(states, function (i, state) {
+                            $("#ID_CT_TIPO_IDENTIFICACION").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        console.log(ex.responseText);
+                    }
+                });
+
+                
+
+                    $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListEstadoCivil")', // we are calling json method
+                    dataType: 'json',
+                    success: function(states) {
+                        //   alert("ok_pais");
+                        $.each(states, function (i, state) {
+                            $("#ID_CT_ESTADO_CIVIL").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        console.log(ex.responseText);
+                    }
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListPais")', // we are calling json method
+                    dataType: 'json',
+                    success: function(states) {
+                        //   alert("ok_pais");
+                        $.each(states, function (i, state) {
+                            $("#ID_CT_PAIS").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        console.log(ex.responseText);
+                    }
+                });
+
+                $("#ID_CT_PAIS").change(function () {
+                    $("#ID_CT_DEPTO").empty();
+                    // alert("okdepto" + $("#ID_CT_ID_CT_PAIS").val());
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("ListDeptoId")', // we are calling json method
+                        dataType: 'json',
+                        data: { IdP: $("#ID_CT_PAIS").val() },
+                            success: function(states) {
+                                //alert("okdepto");
+                                $("#ID_CT_DEPTO").append('<option value="">Seleccione</option>');
+                                $.each(states, function (i, state) {
+                                    $("#ID_CT_DEPTO").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                });
+                            },
+                        error: function (ex) {
+                            console.log(ex.responseText);
+                        }
+                    });
+                    return false;
+                });
+                $("#ID_CT_DEPTO").change(function () {
+                    $("#ID_CT_CIUDAD").empty();
+                    //alert("okdepto" + $("#ID_CT_DEPTO").val());
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("ListCiudadId")', // we are calling json method
+                        dataType: 'json',
+                        data: { IdP: $("#ID_CT_DEPTO").val() },
+                            success: function(states) {
+                                //alert("okdepto");
+                                $("#ID_CT_CIUDAD").append('<option value="">Seleccione</option>');
+                                $.each(states, function (i, state) {
+                                    $("#ID_CT_CIUDAD").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                                });
+                            },
+                        error: function (ex) {
+                            console.log(ex.responseText);
+                        }
+                    });
+                    return false;
+                });
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListGenero")', // we are calling json method
+                    dataType: 'json',
+                    success: function(states) {
+                        //   alert("ok_pais");
+                        $.each(states, function (i, state) {
+                            $("#GENERO").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                        });
+                    },
+                    error: function (ex) {
+                        console.log(ex.responseText);
+                    }
+            });
+
+            $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ListUserData")', // we are calling json method
+                    dataType: 'json',
+                    success: function(states) {
+                        //   alert("ok_pais");
+                        //$.each(states, function (i, state) {
+                        //    $("#GENERO").append('<option value="' + state.Value + '">' +state.Text + '</option>');
+                        //});
+                        //alert("ok");
+                        $("#NOMBRES").val(states["Name"]);
+                        $("#APELLIDOS").val(states["FirstName"] + " " + states["LastName"]);
+                        $("#ID_USERS").val(states["Id"]);
+                        var decodedData = window.atob(states["Image"]);
+                        $("#DivImageName").html("<img class='text - center img - responsive center - block' src='" + decodedData + "' /><hr />");
+                        console.log(states)
+                    },
+                    error: function (ex) {
+                        console.log(ex.responseText);
+                    }
+                });
+        console.log("ready!");
+        });
+        </script>
+
+    }
+    <title> @ViewBag.Title </title>
+</head>
+<body>
+
+
+
+    <div class="card mb-4 wow fadeIn">
+
+        <!--Card content-->
+        <div class="card-body d-sm-flex justify-content-between">
+            <h3 class="card-title">Crear Datos Basicos</h3>
+            <p class="card-text">Hoja de Vida / Datos Basicos </p>
+        </div>
+
+    </div>
+
+    @Html.AntiForgeryToken()
+    <div class="row wow fadeIn">
+        <div class="col-md-12">
+            @using (Html.BeginForm())
+            {
+
+                <div class="card">
+                    <div class="card-header card text-white bg-primary blue darken-3 text-right "><h4>Informacion Personal </h4> </div>
+                    <div class="card-body">
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3 center-block text-center" >
+                                        <div id="DivImageName">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sb-2 col-form-label"><strong class="requerido"></strong> Nombres</label>
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(model => model.NOMBRES, new { htmlAttributes = new { @class = "form-control boder " } })
+                                            @Html.ValidationMessageFor(model => model.NOMBRES, "", new { @class = "text-danger" })
+                                        </div>
+                                        <label class="col-sb-2 col-form-label"><strong class="requerido"></strong> Tipo Identificacion</label>
+                                        <div class="col-sm-10">
+                                            @Html.DropDownList("ID_CT_TIPO_IDENTIFICACION", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.ID_CT_TIPO_IDENTIFICACION, "", new { @class = "text-danger" })
+                                        </div>
+                                        <label class="col-sb-2 col-form-label"><strong class="requerido"></strong> Fecha de Nacimiento</label>
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(model => model.F_NACIMIENTO, new { htmlAttributes = new { @class = "form-control datepicker", @type = "date" } })
+                                            @Html.ValidationMessageFor(model => model.F_NACIMIENTO, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-sb-2 col-form-label"><strong class="requerido"></strong> Apellidos</label>
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(model => model.APELLIDOS, new { htmlAttributes = new { @class = "form-control boder " } })
+                                            @Html.ValidationMessageFor(model => model.APELLIDOS, "", new { @class = "text-danger" })
+                                        </div>
+                                        <label class="col-sb-2 col-form-label"><strong class="requerido"></strong> Numero de Identificacion</label>
+                                        <div class="col-sm-10">
+                                            @Html.EditorFor(model => model.IDENTIFICACION, new { htmlAttributes = new { @class = "form-control boder " } })
+                                            @Html.ValidationMessageFor(model => model.IDENTIFICACION, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header card text-white text-right bg-primary blue darken-3"><h4>Lugar de Nacimiento</h4> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <strong class="requerido"></strong>  Pais
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("ID_CT_PAIS", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_PAIS, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-sm-2">
+                                <strong class="requerido"></strong> Departamento
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("ID_CT_DEPTO", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_DEPTO, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <strong class="requerido"></strong> Ciudad
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("ID_CT_CIUDAD", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_CT_CIUDAD, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header card text-white bg-primary text-right blue darken-3"><h4>Informacion General </h4> </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <strong class="requerido"></strong> Estado Civil
+                                </div>
+                                <div class="col-sm-4">
+                                    @Html.DropDownList("ID_CT_ESTADO_CIVIL", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                    @*@Html.EditorFor(model => model.ID_CT_ESTADO_CIVIL, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.ID_CT_ESTADO_CIVIL, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-sm-2">
+                                    <strong class="requerido"></strong> Genero
+                                </div>
+                                <div class="col-sm-4">
+
+                                    @Html.DropDownList("GENERO", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.GENERO, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header card text-white text-right bg-primary blue darken-3"><h4>Descripcion del Perfil</h4> </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <strong class="requerido"></strong> @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <strong class="requerido"></strong> Perfil
+                            </div>
+                            <div class="col-sm-4">
+                                @Html.DropDownList("ID_PERFIL", new SelectList(string.Empty, "Value", "Text"), "Seleccione", new { @class = "form-control ID_PERFIL select2-container" })
+                                @Html.ValidationMessageFor(model => model.ID_PERFIL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br />
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.IMAGE_NAME, new { htmlAttributes = new { @class = "form-control ", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_CIUDAD, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_DEPTO, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_PAIS, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_GENERO, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.ID_USERS, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_ESTADO_CIVIL, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_TIPO_IDENTIFICACION, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            @Html.EditorFor(model => model.NOMBRE_PERFIL, new { htmlAttributes = new { @class = "form-control", @Style = "display:none", @Value = "ok", @type = "hidden" } })
+                            <input type="submit" value="Crear" class="btn btn-primary align-content-center" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+

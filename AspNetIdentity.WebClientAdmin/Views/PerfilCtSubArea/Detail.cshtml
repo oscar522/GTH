@@ -1,0 +1,44 @@
+﻿@model AspNetIdentity.Models.PerfilCtSubAreaModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="card mb-4 wow fadeIn">
+    <div class="card-body d-sm-flex justify-content-between">
+        <h3 class="card-title">Detalle Sub Area  @Html.DisplayFor(modelItem => Model.DESCRIPCION) </h3>
+        <p class="card-text">Perfil  / Sub Area</p>
+    </div>
+</div>
+<div class="row wow fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">  </div>
+            <div class="card-body">
+                <hr />
+                <dl class="dl-horizontal">
+                  
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ID_CT_AREA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreArea)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DESCRIPCION)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DESCRIPCION)
+                    </dd>
+
+                </dl>
+            </div>
+         
+        </div>
+    </div>
+</div>
+
+
